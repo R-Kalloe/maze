@@ -20,6 +20,7 @@ public class MyWorld extends World
         super(600, 600, 1);
         this.score=0;
         prepare();
+        gameOver();
     }
     
     public void act(){
@@ -45,11 +46,11 @@ public class MyWorld extends World
                 {1, 1, 1, 1, 0, 2, 1, 0, 0, 0, 1, 0},
                 {Greenfoot.getRandomNumber(2)+2, 0, 0, 1, 0, 1, 1, 0, 1, Greenfoot.getRandomNumber(2)+2, 1, 0},
                 {1, 1, 0, 1, 0, 1, 1, 0, 1, 1, 1, 0},
-                {Greenfoot.getRandomNumber(2)+2, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0},
+                {Greenfoot.getRandomNumber(2)+2, 0, 0, 0, 0, 4, 0, 0, 1, 0, 0, 0},
                 {1, 1, 0, 1, 1, 0, 1, 0, 1, 0, 1, 1},
                 {0, 0, 0, 1, 1, 0, 1, 0, 0, 0, 0, 0},
                 {0, 1, 0, 1, 0, 0, 1, 0, 1, 2, 1, 0},
-                {0, 1, 1, 1, 0, 1, 1, 0, Greenfoot.getRandomNumber(2)+2, 0, 1, 1},
+                {0, 1, 1, 1, 0, 1, 1, 4, Greenfoot.getRandomNumber(2)+2, 0, 1, 1},
                 {0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, Greenfoot.getRandomNumber(2)+2},
                 {Greenfoot.getRandomNumber(2)+2, 1, 0, 1, 0, 1, 1, 0, 0, 1, Greenfoot.getRandomNumber(2)+2, 0},
                 {1, 1, 0, 1, 0, 1, 1, 0, 1, 1, 1, 0},
@@ -67,13 +68,22 @@ public class MyWorld extends World
                 }  
                 else if(maze[i][j] == 3){
                     addObject(new Enemy(),x,y);
-                }  
+                }
+                else if(maze[i][j] == 4){
+                    addObject(new Bomb(),x,y);
+                }
                 x = x+50;
             }
             y= y+50;
         }
+        
+        private void gameOver()
+        {
+        
+        }
 
         addObject(new Person(),25,575);
+        //addObject(new Bomb(), 200, 500);
 
     }
   
